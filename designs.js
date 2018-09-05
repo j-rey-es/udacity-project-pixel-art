@@ -1,5 +1,5 @@
 // Select color input
-let color = document.getElementById('colorPicker').value;
+let color = document.getElementById('colorPicker');
 
 // Select size input
 let sizePicker = document.getElementById('sizePicker');
@@ -15,9 +15,18 @@ sizePicker.addEventListener('submit',function(event){
 })
 
 
-function makeGrid() {
-
-
-// Your code goes here!
-
+function makeGrid(inputHeight,inputWidth) {
+  let table = document.getElementById('pixelCanvas');
+  table.innerHTML = ''; //clears old table out
+  for (let i = 0; i < inputHeight; i++){
+    let newRow = table.insertRow();
+    for (let j = 0; j < inputWidth; j++){
+      let newCell = newRow.insertCell();
+      newCell.onclick = changeColor;
+    }
+  }
 }
+function changeColor(){
+  this.style.background = color.value;
+}
+// Your code goes here!
